@@ -33,6 +33,8 @@ class StarEngineConfig:
     ENABLE_PERFORMANCE_MONITORING: bool = True
     ENABLE_STRICT_VALIDATION: bool = True
     ENABLE_REPENTANCE_AUTO_TRIGGER: bool = True
+    PERFORMANCE_LOG_THRESHOLD_MS: float = 100.0
+    REPENTANCE_TRIGGER_THRESHOLD: float = 0.7854  # π/4
     
     # Thresholds
     DENSITY_VALIDATION_THRESHOLD: float = 1.5
@@ -58,7 +60,9 @@ class StarEngineConfig:
             ENABLE_REPENTANCE_AUTO_TRIGGER=os.getenv('ENABLE_REPENTANCE_AUTO_TRIGGER', 'true').lower() == 'true',
             DENSITY_VALIDATION_THRESHOLD=float(os.getenv('DENSITY_VALIDATION_THRESHOLD', 1.5)),
             COHERENCE_MIN=float(os.getenv('COHERENCE_MIN', 0.0)),
-            COHERENCE_MAX=float(os.getenv('COHERENCE_MAX', 2.0))
+            COHERENCE_MAX=float(os.getenv('COHERENCE_MAX', 2.0)),
+            PERFORMANCE_LOG_THRESHOLD_MS=float(os.getenv('PERFORMANCE_LOG_THRESHOLD_MS', 100.0)),
+            REPENTANCE_TRIGGER_THRESHOLD=float(os.getenv('REPENTANCE_TRIGGER_THRESHOLD', 0.7854))
         )
     
     def to_dict(self) -> Dict[str, Any]:
